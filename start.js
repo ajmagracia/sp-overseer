@@ -4,4 +4,5 @@ require('babel-register')({
 });
 
 // Import the rest of our application.
+require('dotenv').load();
 module.exports = require('./index.js');

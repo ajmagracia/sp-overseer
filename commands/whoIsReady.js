@@ -25,7 +25,7 @@ export const execute = async (message, args) => {
 	else if (memberList.length === 2) {
 		memberString = `${memberList[0]} and ${memberList[1]}`;
 	}
-	else {
+	else if (memberList.length) {
 		memberString = memberList.map((member) => member.username).join(', ');
 	}
 	return message.channel.send(
