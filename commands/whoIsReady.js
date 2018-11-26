@@ -28,7 +28,6 @@ export const execute = async (message, args) => {
 	else if (memberList.length) {
 		memberString = memberList.map((member) => member.username).join(', ');
 	}
-	console.log(memberList[0].username);
 	return message.channel.send(
 		`${memberString}${verb || ''} ready to commence the suicide pact.`
 	);
