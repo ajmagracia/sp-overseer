@@ -1,7 +1,7 @@
 import { ReadyMembers } from '../index';
 
 export const name = 'notready';
-export const description = 'Declare readiness for the suicide pact';
+export const description = 'Declare non-readiness for the suicide pact';
 export const aliases = ['unready', 'bail'];
 export const guildOnly = true;
 export const cooldown = 5;
