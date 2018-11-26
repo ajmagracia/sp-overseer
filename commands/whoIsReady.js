@@ -23,7 +23,7 @@ export const execute = async (message, args) => {
 		verb = undefined;
 	}
 	else if (memberList.length === 2) {
-		memberString = `${memberList[0].username} and ${memberList[1].username}`;
+		memberString = `${memberList[0].username} ${memberList[1].username}`;
 	}
 	else if (memberList.length) {
 		memberString = memberList.map((member) => member.username).join(', ');
