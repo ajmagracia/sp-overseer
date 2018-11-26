@@ -13,8 +13,8 @@ export const execute = async (message, args) => {
 	let verb = ' is';
 	const memberList = await ReadyMembers.findAll({ attributes: ['username'] });
 	if (memberList.length > 1) {
-		memberList[memberList.length - 1] = `and ${
-			memberList[memberList.length - 1]
+		memberList[memberList.length - 1].username = `and ${
+			memberList[memberList.length - 1].username
 		}`;
 		verb = ' are';
 	}
@@ -28,6 +28,7 @@ export const execute = async (message, args) => {
 	else if (memberList.length) {
 		memberString = memberList.map((member) => member.username).join(', ');
 	}
+	console.log(memberList[0].username);
 	return message.channel.send(
 		`${memberString}${verb || ''} ready to commence the suicide pact.`
 	);
