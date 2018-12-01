@@ -1,3 +1,9 @@
 {
-	"prefix": "!"
+	"prefix": "!",
+	"names": {
+		"clark": ["cluck", "clock"],
+		"curtis": ["cortis", "cactus", "pie", "cactapus"],
+		"jarloe": ["god"],
+		"jlo": ["god"]
+	}
 }

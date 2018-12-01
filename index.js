@@ -1,5 +1,5 @@
 import fs from 'fs';
-import { prefix, token } from './config.json';
+import { prefix, names } from './config.json';
 import Discord from 'discord.js';
 import Sequelize from 'sequelize';
 
@@ -25,6 +25,20 @@ export const ReadyMembers = sequelize.define('readyMembers', {
 	},
 });
 
+const correctName = (name) =>
+	nameChecker(name).on('collect', (message) =>
+		message.channel.send(
+			names[name][Math.floor(Math.random() * names[name].length)] + '*'
+		)
+	);
+
+const nameChecker = (name) =>
+	bot.channels
+		.get('203370370164719616')
+		.createMessageCollector((message) =>
+			message.content.toLowerCase().includes(name)
+		);
+
 const commandFiles = fs
 	.readdirSync('./commands')
 	.filter((file) => file.endsWith('.js'));
@@ -43,6 +57,8 @@ export const getUserFromMention = (mention) => {
 bot.once('ready', () => {
 	ReadyMembers.sync();
 	console.log('Ready!');
+	console.log(names, typeof names);
+	Object.keys(names).forEach((name) => correctName(name));
 });
 
 bot.on('message', async (message) => {
