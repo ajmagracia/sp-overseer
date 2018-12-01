@@ -12,6 +12,7 @@ export const execute = (message, args) => {
 			'please use a proper mention (`@user`) if you want me to slap someone.'
 		);
 	}
+	message.delete();
 	message.channel.send(
 		`The Revered ${message.guild.name} Overseer just slapped ${user.username}!`
 	);

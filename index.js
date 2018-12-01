@@ -57,7 +57,6 @@ export const getUserFromMention = (mention) => {
 bot.once('ready', () => {
 	ReadyMembers.sync();
 	console.log('Ready!');
-	console.log(names, typeof names);
 	Object.keys(names).forEach((name) => correctName(name));
 });
 
