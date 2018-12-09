@@ -6,6 +6,7 @@ import Sequelize from 'sequelize';
 const bot = new Discord.Client();
 bot.commands = new Discord.Collection();
 const cooldowns = new Discord.Collection();
+export const correctors = new Discord.Collection();
 
 const sequelize = new Sequelize('database', 'user', 'password', {
 	host: 'localhost',
@@ -25,14 +26,16 @@ export const ReadyMembers = sequelize.define('readyMembers', {
 	},
 });
 
-const correctName = (name) =>
-	nameChecker(name).on('collect', (message) =>
-		message.channel.send(
-			names[name][Math.floor(Math.random() * names[name].length)] + '*'
-		)
-	);
+export const correctName = (name, collectors) =>
+	collectors
+		.get(name)
+		.on('collect', (message) =>
+			message.channel.send(
+				names[name][Math.floor(Math.random() * names[name].length)] + '*'
+			)
+		);
 
-const nameChecker = (name) =>
+export const listenName = (name) =>
 	bot.channels
 		.get('203370370164719616')
 		.createMessageCollector((message) =>
@@ -57,7 +60,6 @@ export const getUserFromMention = (mention) => {
 bot.once('ready', () => {
 	ReadyMembers.sync();
 	console.log('Ready!');
-	Object.keys(names).forEach((name) => correctName(name));
 });
 
 bot.on('message', async (message) => {

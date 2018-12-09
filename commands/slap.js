@@ -2,7 +2,7 @@ import { getUserFromMention } from '../index';
 
 export const name = 'slap';
 export const description = 'Slap another user';
-export const args = true;
+export const arg = true;
 export const usage = '<user>';
 export const execute = (message, args) => {
 	const user = getUserFromMention(args[0]);
