@@ -59,6 +59,7 @@ export const getUserFromMention = (mention) => {
 
 bot.once('ready', () => {
 	ReadyMembers.sync();
+	bot.channels.get('203370370164719616').send('System reset');
 	console.log('Ready!');
 });
 
